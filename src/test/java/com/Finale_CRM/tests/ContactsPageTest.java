@@ -2,6 +2,7 @@ package com.Finale_CRM.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.Finale_CRM.Base.BaseTest;
@@ -23,7 +24,7 @@ public class ContactsPageTest  extends BaseTest {
 	{
 		super();
 	}
-	
+	@Parameters("browserName")
 	@BeforeMethod
 	public void setUp() throws InterruptedException
 	{
@@ -51,7 +52,7 @@ public class ContactsPageTest  extends BaseTest {
 		return data;
 	}
 	
-	@Test(priority =2, dataProvider = "getCRMTestData")
+	@Test(priority =1, dataProvider = "getCRMTestData")
 	public void enterContactsDetailsTest(String fname, String lname)
 	{
 		TestUtil.switchToFrame();

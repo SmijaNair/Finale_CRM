@@ -1,27 +1,53 @@
 package com.Finale_CRM.tests;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.Finale_CRM.Base.BaseTest;
 import com.Finale_CRM.pages.HomePage;
 import com.Finale_CRM.pages.LoginPage;
+import com.Finale_CRM.util.TestUtil;
 
 public class LoginPageTest  extends BaseTest
 {
 	LoginPage loginPage;
 	HomePage homePage;
 
-	public LoginPageTest()
+	/*public LoginPageTest()
 	{
 		super();
-	}
+	}*/
 	
+	@Parameters("browserName")
 	@BeforeMethod
-	public void setUp()
+	public void setUp(String browserName)
 	{
-		initialization();
+		if(browserName.equals("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", "./Softwares/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+		
+		else if(browserName.equals("Firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "./Softwares/geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+		
+		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICITLY_WAIT, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+		
+		
+		driver.get(prop.getProperty("url"));
 		loginPage = new LoginPage();
 	}
 	

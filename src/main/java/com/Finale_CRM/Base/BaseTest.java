@@ -9,20 +9,24 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import com.Finale_CRM.util.TestUtil;
+import com.Finale_CRM.util.WebEventListener;
 
 public class BaseTest
 {
 	public static WebDriver driver;
 	public static Properties prop;
+	public static EventFiringWebDriver e_driver;
+	public static WebEventListener eventListener;
 
 	public BaseTest()
 	{
 		try
 		{
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream("C:\\Users\\20073007\\Documents\\Selenium\\Individual_Projects\\Finale_CRM\\src\\main\\java\\com\\Finale_CRM\\config\\config.properties");
+			FileInputStream ip = new FileInputStream("C:\\Users\\smija\\Finale_CRM\\src\\main\\java\\com\\Finale_CRM\\config\\config.properties");
 			prop.load(ip);
 		}
 		catch(FileNotFoundException e)
@@ -37,7 +41,7 @@ public class BaseTest
 	public void initialization()
 	{
 		String browserName = prop.getProperty("browser");
-		if(browserName.equals("Chrome"))
+		if(browserName.equals("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", "./Softwares/chromedriver.exe");
 			driver = new ChromeDriver();
@@ -48,6 +52,12 @@ public class BaseTest
 			System.setProperty("webdriver.gecko.driver", "./Softwares/geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
+		
+		e_driver = new EventFiringWebDriver(driver);
+		//Now create object of EventListerHandler to register it with EventFiringWebDriver
+		eventListener = new WebEventListener();
+		e_driver.register(eventListener);
+		driver = e_driver;
 		
 		
 		driver.manage().window().maximize();

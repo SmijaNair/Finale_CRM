@@ -49,7 +49,7 @@ public class LoginPage  extends BaseTest
 	{
 		userName.sendKeys(un);
 		password.sendKeys(pwd);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		LoginBtn.click();
 		
 		return new HomePage();

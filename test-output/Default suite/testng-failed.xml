@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+  <test verbose="2" name="Default test">
     <classes>
-      <class name="com.Finale_CRM.tests.ContactsPageTest">
+      <class name="com.Finale_CRM.tests.HomePageTest">
         <methods>
-          <include name="enterContactsDetailsTest"/>
+          <include name="clickOnContactsTest"/>
+        </methods>
+      </class> <!-- com.Finale_CRM.tests.HomePageTest -->
+    </classes>
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.Finale_CRM.tests.HomePageTest">
+        <methods>
+          <include name="clickOnContactsTest"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.Finale_CRM.tests.ContactsPageTest -->
+      </class> <!-- com.Finale_CRM.tests.HomePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

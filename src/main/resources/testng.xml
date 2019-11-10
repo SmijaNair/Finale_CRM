@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FreeCRMApplicationTestSuite" thread-count="2" parallel = "tests">
+
+<listeners>
+<listener class-name="com.Finale_CRM.ExtentReportListener.extentReportListener"></listener></listeners>
+
+  <test name="FreeCRMAPplicationTestCaseschrome">
+  <parameter name = "browserName" value="chrome"></parameter>
+    <classes>
+     
+      <class name="com.Finale_CRM.tests.LoginPageTest"></class>
+    </classes>
+  </test> <!-- Test -->
+  
+  <test name="FreeCRMAPplicationTestCasesfirefox">
+  <parameter name = "browserName" value="Firefox"></parameter>
+    <classes>
+     
+      <class name="com.Finale_CRM.tests.LoginPageTest"></class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [FreeCRMApplicationTestSuite]" parallel="tests">
+  <parameter name="browserName" value="Firefox"/>
+  <listeners>
+    <listener class-name="com.Finale_CRM.ExtentReportListener.extentReportListener"/>
+  </listeners>
+  <test name="FreeCRMAPplicationTestCaseschrome">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="com.Finale_CRM.tests.LoginPageTest"/>
+    </classes>
+  </test> <!-- FreeCRMAPplicationTestCaseschrome -->
+  <test name="FreeCRMAPplicationTestCasesfirefox">
+    <parameter name="browserName" value="Firefox"/>
+    <classes>
+      <class name="com.Finale_CRM.tests.LoginPageTest"/>
+    </classes>
+  </test> <!-- FreeCRMAPplicationTestCasesfirefox -->
+  <test name="FreeCRMAPplicationTestCaseschrome(failed)" parallel="tests">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="com.Finale_CRM.tests.LoginPageTest">
+        <methods>
+          <include name="valildateTitleTest"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.Finale_CRM.tests.LoginPageTest -->
+    </classes>
+  </test> <!-- FreeCRMAPplicationTestCaseschrome(failed) -->
+  <test name="FreeCRMAPplicationTestCasesfirefox(failed)" parallel="tests">
+    <parameter name="browserName" value="Firefox"/>
+    <classes>
+      <class name="com.Finale_CRM.tests.LoginPageTest">
+        <methods>
+          <include name="valildateTitleTest"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.Finale_CRM.tests.LoginPageTest -->
+    </classes>
+  </test> <!-- FreeCRMAPplicationTestCasesfirefox(failed) -->
+</suite> <!-- Failed suite [FreeCRMApplicationTestSuite] -->
